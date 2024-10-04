@@ -1,0 +1,50 @@
+.filter-border {
+  outline: 1.5px solid silver;
+  outline-offset: -1.5px;
+}
+
+.week-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .calendar-week {
+    width: 12.5%;
+    color: slategray;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .calendar-days-container {
+    width: 87.5%;
+    display: flex;
+    background-color: lightgray;
+
+    .calendar-day {
+      flex-grow: 1;
+      width: auto;
+    }
+  }
+
+  .calendar-week:hover {
+    background-color: silver;
+    color: black;
+  }
+
+  .is-selected {
+    font-weight: bold;
+  }
+
+  .is-selected:hover {
+    color: black;
+  }
+
+  .sundays {
+    font-weight: bold;
+  }
+
+  .inFilter {
+    background-color: gray;
+  }
+
+}

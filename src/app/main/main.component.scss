@@ -1,0 +1,27 @@
+.heading {
+    margin-bottom: 2px;
+    margin-left: 10px;
+    padding-left: 20px;
+    /*margin-left: auto;
+    margin-right: auto;
+    width: 300px;*/
+}
+
+.calendar-container {
+    /*margin-left: auto;
+    margin-right: auto;
+    width: 300px;*/
+    padding-left: 20px;
+    padding-right: 60px;
+}
+
+.main-container {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.appointment-container {
+    margin-top: 0;
+    padding: 0;
+}

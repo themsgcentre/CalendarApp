@@ -1,0 +1,48 @@
+:host {
+    width: 300px;
+  }
+  
+  * {
+    text-align: center;
+  }
+  
+  .headline {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background-color: slategray;
+    margin-bottom: 2px;
+  }
+  
+  .calendar-body {
+    .weekdays {
+      margin-left: 14.29%;
+      display: flex;
+  
+      .calendar-element {
+        font-size: 18px;
+      }
+  
+      .sundays {
+        font-weight: bold;
+      }
+    }
+  
+    .calendar-element {
+      width: 14.26%;
+      line-height: 39px;
+      border-radius: 50px;
+    }
+  
+    .calendar-week-container {
+      line-height: 39px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+    }
+  
+    .sundays {
+      font-weight: bold;
+    }
+  }

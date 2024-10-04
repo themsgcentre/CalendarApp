@@ -1,0 +1,15 @@
+<div class="week-container" [class.filter-border]="week.isSelected">
+    <div class="calendar-week" (click)="selectWeek()" [class.is-selected]="week.isSelected">
+      {{ week.calenderWeek | number: '2.0' }}
+    </div>
+  
+    <div class="calendar-days-container">
+      <app-calendar-day
+        class="calendar-day"
+        *ngFor="let calendarDay of week?.days; let i = index"
+        [class.sundays]="isSunday(i)"
+        [class.inFilter]="week.isSelected"
+        [calendarDay]="calendarDay"
+      ></app-calendar-day>
+    </div>
+</div>

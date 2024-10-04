@@ -1,0 +1,25 @@
+* {
+    font-size: 18px;
+}
+
+.today {
+  background-color: darkgray;
+}
+
+.is-selected {
+  background-color: blue;
+}
+
+:hover {
+  background: rgb(70, 70, 70);
+}
+
+.not-current-month {
+  color: lightgrey;
+  opacity: 0.65;
+}
+
+:host(.inFilter) .not-current-month {
+  color: black;
+  opacity: 1;
+}

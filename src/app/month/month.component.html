@@ -1,0 +1,13 @@
+<div class="calendar-body">
+  <div class="weekdays">
+    <div class="calendar-element" *ngFor="let weekday of dayNames; let i = index" [class.sundays]="isSunday(i)">
+      {{ weekday.toLocaleUpperCase() }}
+    </div>
+  </div>
+  <div class="calendar-week-container">
+    <app-calendar-week
+      *ngFor="let week of month.weeks"
+      [week]="week"
+    ></app-calendar-week>
+  </div>
+</div>

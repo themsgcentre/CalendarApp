@@ -1,0 +1,5 @@
+<p class="description">Welcome to the my calendar app. Select different days or weeks to look into your appointments or create new ones.</p>
+<app-month-picker class="picker" [monthName]="month.moment | date: 'MMMM yyyy'" (offsetChange)="offsetChanged($event)">(picker)</app-month-picker>
+<app-month
+    [month]="month"
+></app-month>

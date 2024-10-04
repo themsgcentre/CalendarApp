@@ -1,0 +1,10 @@
+<div
+  class="calendar-day-tile"
+  [ngClass]="{
+    today: calendarDay.today && calendarDay.currentMonth,
+    'current-month': calendarDay.currentMonth,
+    'not-current-month': !calendarDay.currentMonth
+  }"
+>
+  {{ calendarDay.date | date: 'dd' }}
+</div>

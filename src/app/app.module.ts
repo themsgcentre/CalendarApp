@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { MonthComponent } from './month/month.component';
+import { CalendarWeekComponent } from './calendar-week/calendar-week.component';
+import { CalendarDayComponent } from './calendar-day/calendar-day.component';
+import { MainComponent } from './main/main.component';
+import { MonthPickerComponent } from './month-picker/month-picker.component';
+import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    CalendarComponent,
+    MonthComponent,
+    CalendarWeekComponent,
+    CalendarDayComponent,
+    MainComponent,
+    MonthPickerComponent,
+    CreateAppointmentComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
