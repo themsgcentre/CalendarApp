@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CalendarDay } from '../models/calendar-day';
 
 @Component({
@@ -8,4 +8,13 @@ import { CalendarDay } from '../models/calendar-day';
 })
 export class CalendarDayComponent {
   @Input() calendarDay!: CalendarDay;
+  @Output() daySelected = new EventEmitter<CalendarDay>();
+  selected = false;
+
+  toggleSelected() {
+    this.selected = !this.selected;
+    if(this.selected) {
+      this.daySelected.emit(this.calendarDay);
+    }
+  }
 }

@@ -10,6 +10,8 @@ import { CalendarDayComponent } from './calendar-day/calendar-day.component';
 import { MainComponent } from './main/main.component';
 import { MonthPickerComponent } from './month-picker/month-picker.component';
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
+import { SaveRedirectComponent } from './save-redirect/save-redirect.component';
+import { AppointmentOverviewComponent } from './appointment-overview/appointment-overview.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CreateAppointmentComponent } from './create-appointment/create-appointm
     CalendarDayComponent,
     MainComponent,
     MonthPickerComponent,
-    CreateAppointmentComponent
+    CreateAppointmentComponent,
+    SaveRedirectComponent,
+    AppointmentOverviewComponent
   ],
   imports: [
     BrowserModule,

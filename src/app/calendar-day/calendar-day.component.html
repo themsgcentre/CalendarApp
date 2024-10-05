@@ -3,8 +3,10 @@
   [ngClass]="{
     today: calendarDay.today && calendarDay.currentMonth,
     'current-month': calendarDay.currentMonth,
-    'not-current-month': !calendarDay.currentMonth
+    'not-current-month': !calendarDay.currentMonth,
+    'is-selected': selected
   }"
+  (click)="toggleSelected()"
 >
   {{ calendarDay.date | date: 'dd' }}
 </div>

@@ -7,11 +7,14 @@
 }
 
 .is-selected {
-  background-color: blue;
+  outline: solid 1.5px rgb(70, 70, 70);
+  background-color: rgb(140, 140, 140);
+  outline-offset: -1.5px;
 }
 
 :hover {
-  background: rgb(70, 70, 70);
+  background: silver;
+  cursor: pointer;
 }
 
 .not-current-month {

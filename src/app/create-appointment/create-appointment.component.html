@@ -1,1 +1,24 @@
-<p>create-appointment works!</p>
+<div class="main-container">
+    <div class="title">Create your new appointment:</div>
+    <form class="form-container" action="save" method="GET">
+        <div class="date-time-container">
+            <div class="date-container">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" name="date" class="picker">
+            </div>
+            <div class="time-container">
+                <label for="time" class="form-label">Time</label>
+                <input type="time" name="time" class="picker">
+            </div>
+        </div>
+        <div class="title-container">
+            <label for="title" class="form-label">Title</label>
+            <textarea name="title" class="text-input" placeholder="Enter a title..."></textarea>
+        </div>
+        <div class="description-container">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="text-input" placeholder="Enter a description..."></textarea>
+        </div>
+        <input type="submit" value="submit" class="submit-button">
+    </form>
+</div>

@@ -1,0 +1,101 @@
+.main-container {
+    width: 50%;
+    /*margin-right: auto;
+    margin-left: auto;*/
+}
+
+.title {
+    background-color: slategray;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    width: fit-content;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.text-input {
+    font-size: 10px;
+    line-height: 12px;
+    width: 100%;
+    resize: none;
+}
+
+.date-time-container {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.date-container {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    .picker {
+        height: 16px;
+        width: 100px;
+        line-height: 16px;
+        font-size: 14px;
+    }
+}
+
+.time-container {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+
+    .picker {
+        height: 16px;
+        width: 100px;
+        line-height: 16px;
+        font-size: 14px;
+    }
+}
+
+.description-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2px;
+
+    .text-input {
+        height: 200px;
+    }
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    .text-input {
+        height: 12px;
+    }
+}
+
+.form-label {
+    color: rgb(80, 80, 80);
+    font-size: 12px;
+}
+
+.submit-button {
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    text-align: center;
+    background-color: slategray;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: rgb(64, 73, 82);
+}

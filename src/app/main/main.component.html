@@ -1,8 +1,18 @@
-<h1 class="heading">My Calendar</h1>
 <div class="main-container">
-    <div class="calendar-container">
-        <app-calendar></app-calendar>
+    <h1 class="heading">My Calendar</h1>
+    <p class="description">Welcome to the my calendar app. Select different days or weeks to look into your appointments or create new ones.</p>
+    <div class="main-area">
+        <div class="calendar-container">
+            <app-calendar></app-calendar>
+        </div>
+        <app-appointment-overview
+            [appointments]="appointments$ | async">
+        </app-appointment-overview>
     </div>
-    <div class="appointment-container">Hier stehen Termine: </div>
+    <div class="button-container">
+        <div class="create-button" [routerLink]="['/create']">
+            create appointment
+        </div>
+    </div>
 </div>
 
