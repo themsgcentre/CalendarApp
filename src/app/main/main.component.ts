@@ -9,8 +9,10 @@ import { AppointmentService } from '../services/appointment.service';
   styleUrl: './main.component.scss'
 })
 export class MainComponent implements OnInit {
+  appointments$: Observable<Appointment[]> = new Observable<Appointment[]>;
+
   constructor(private appointmentService: AppointmentService) {}
-  appointments$: Observable<Appointment[]> = new Observable<Appointment[]>();
+
   ngOnInit(): void {
     this.appointments$ = this.appointmentService.getAppointments();
   }

@@ -1,46 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Appointment } from '../models/appointment';
 import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import { Appointment } from '../models/appointment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentService {
-  constructor() { }
-  private appointmentsSubject$ = new BehaviorSubject<Appointment[]>([]);
+  private appointmentsSubject = new BehaviorSubject<Appointment[]>([]);
+  private appointments$ = this.appointmentsSubject.asObservable();
   private filterSubject$ = new BehaviorSubject<Date[]>([]);
-  private appointments: Appointment[] = [];
+  private filter$ = this.filterSubject$.asObservable();
+
+  constructor() { }
 
   public clearAll(): void {
-    this.appointmentsSubject$.next([]);
+    this.appointmentsSubject.next([]);
   }
 
   public addAppointment(appointment: Appointment): void {
-    this.appointments.push(appointment);
-    this.appointmentsSubject$.next(this.appointments);
+    const currentAppointments = this.appointmentsSubject.value;
+    this.appointmentsSubject.next([...currentAppointments, appointment]);
+  }
+
+  public removeAppointment(appointment: Appointment): void {
+    const currentAppointments = this.appointmentsSubject.value;
+    const filteredAppointments = currentAppointments.filter(app => app !== appointment);
+    this.appointmentsSubject.next(filteredAppointments);
+  }
+
+  public getAppointments(): Observable<Appointment[]> {
+    return combineLatest([this.appointments$, this.filter$]).pipe(
+      map(([appointments, filterDates]) => {
+        if (filterDates.length === 0) {
+          return appointments;
+        }
+        return appointments.filter(appointment => this.isInDates(appointment.date, filterDates));
+      })
+    );
   }
 
   public setFilter(dates: Date[]): void {
     this.filterSubject$.next(dates);
-  }
-
-  public removeAppointment(appointment: Appointment): void {
-    this.appointments = this.appointments.filter(app => app !== appointment);
-    this.appointmentsSubject$.next(this.appointments);
-  }
-
-  public getAppointments(): Observable<Appointment[]> {
-    return combineLatest([this.appointmentsSubject$, this.filterSubject$]).pipe(
-      map(([apps, dateFilter]) => {
-        if (!dateFilter || dateFilter.length === 0) {
-          return apps;
-        } else {
-          return apps.filter(
-            (appointment) => this.isInDates(appointment.date, dateFilter)
-          );
-        }
-      })
-    );
   }
 
   private isInDates(appointmentDate: Date, targetDates: Date[]): boolean {

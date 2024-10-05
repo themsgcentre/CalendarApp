@@ -5,9 +5,7 @@
         <div class="calendar-container">
             <app-calendar></app-calendar>
         </div>
-        <app-appointment-overview
-            [appointments]="appointments$ | async">
-        </app-appointment-overview>
+        <app-appointment-overview [appointments]="(appointments$ | async) || []"></app-appointment-overview>
     </div>
     <div class="button-container">
         <div class="create-button" [routerLink]="['/create']">
