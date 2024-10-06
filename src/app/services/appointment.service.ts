@@ -46,7 +46,7 @@ export class AppointmentService {
     return this.appointments.length;
   }
 
-  public getAppointments(): Observable<Appointment[]> {
+  public getFilteredAppointments(): Observable<Appointment[]> {
     return combineLatest([this.appointments$, this.filter$]).pipe(
       map(([appointments, filterDates]) => {
         if (filterDates.length === 0) {
@@ -55,6 +55,10 @@ export class AppointmentService {
         return appointments.filter(appointment => this.isInDates(appointment.date, filterDates));
       })
     );
+  }
+
+  public getAllAppointments(): Observable<Appointment[]> {
+    return this.appointments$;
   }
 
   public addFilter(date: Date): void {

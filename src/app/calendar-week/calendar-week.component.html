@@ -11,6 +11,7 @@
         [calendarDay]="calendarDay"
         (daySelected)="onDaySelected($event)"
         (dayUnselected)="onDayUnselected($event)"
+        [hasAppointment]="hasAppointment(calendarDay)"
       ></app-calendar-day>
     </div>
 </div>

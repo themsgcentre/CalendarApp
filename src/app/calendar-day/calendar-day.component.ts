@@ -8,6 +8,7 @@ import { CalendarDay } from '../models/calendar-day';
 })
 export class CalendarDayComponent {
   @Input() calendarDay!: CalendarDay;
+  @Input() hasAppointment: boolean = false;
   @Output() daySelected = new EventEmitter<CalendarDay>();
   @Output() dayUnselected = new EventEmitter<CalendarDay>();
   selected = false;

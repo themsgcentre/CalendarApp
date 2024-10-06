@@ -11,11 +11,12 @@
             <app-calendar 
             (daySelected)="onDaySelected($event)" 
             (dayUnselected)="onDayUnselected($event)"
-            [isFiltered]="(isFiltered$ | async) || false">
+            [isFiltered]="(isFiltered$ | async) || false"
+            [appointments]="(appointments$ | async) || []">
             </app-calendar>
         </div>
         <app-appointment-overview 
-        [appointments]="(appointments$ | async) || []"
+        [appointments]="(filteredAppointments$ | async) || []"
         [filtered]="(isFiltered$ | async) || false"
         (removeFilter)="filterRemoved()"
         (deleteAppointment)="deleteAppointment($event)"

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { CalendarMonth } from '../models/calendar-month';
 import { CalendarService } from '../services/calendar.service';
 import { CalendarDay } from '../models/calendar-day';
+import { Appointment } from '../models/appointment';
 
 @Component({
   selector: 'app-calendar',
@@ -15,6 +16,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   @Output() daySelected = new EventEmitter<CalendarDay>();
   @Output() dayUnselected = new EventEmitter<CalendarDay>();
   @Input() isFiltered: boolean = false;
+  @Input() appointments: Appointment[] = [];
 
   ngOnInit(): void {
     this.month = this.calendarService.getMonth(this.offset, []);

@@ -10,12 +10,14 @@ import { CalendarDay } from '../models/calendar-day';
   styleUrl: './main.component.scss'
 })
 export class MainComponent implements OnInit {
+  filteredAppointments$: Observable<Appointment[]> = new Observable<Appointment[]>;
   appointments$: Observable<Appointment[]> = new Observable<Appointment[]>;
   isFiltered$: Observable<boolean> = new Observable<boolean>;
   constructor(private appointmentService: AppointmentService) {}
 
   ngOnInit(): void {
-    this.appointments$ = this.appointmentService.getAppointments();
+    this.filteredAppointments$ = this.appointmentService.getFilteredAppointments();
+    this.appointments$ = this.appointmentService.getAllAppointments();
     this.isFiltered$ = this.appointmentService.isFiltered();
   }
 

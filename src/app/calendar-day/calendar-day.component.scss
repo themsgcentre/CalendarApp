@@ -16,6 +16,14 @@
   outline-offset: -1.5px;
 }
 
+.is-selected.has-appointment {
+  background-color: rgb(194, 203, 212);
+}
+
+.has-appointment {
+  background-color: rgb(194, 203, 212);
+}
+
 :hover {
   background: silver;
   cursor: pointer;
@@ -23,9 +31,4 @@
 
 .not-in-month {
   color: rgb(130, 130, 130);
-}
-
-:host(.inFilter) .not-in-month {
-  color: black;
-  opacity: 1;
 }

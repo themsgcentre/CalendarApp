@@ -2,7 +2,8 @@
   [ngClass]="{
     today: calendarDay.today && calendarDay.currentMonth,
     'not-in-month': !calendarDay.currentMonth,
-    'is-selected': selected
+    'is-selected': selected,
+    'has-appointment': hasAppointment
   }"
   (click)="toggleSelected()"
 >
