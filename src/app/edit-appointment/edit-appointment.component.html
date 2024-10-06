@@ -1,5 +1,7 @@
 <div class="main-container">
     <div class="title">Create your new appointment:</div>
     <app-appointment-form
-    (submit)="submittedAppointment($event)"></app-appointment-form>
+    (submit)="submittedAppointment($event)"
+    [appointment]="appointment">
+    </app-appointment-form>
 </div>

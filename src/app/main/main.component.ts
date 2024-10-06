@@ -11,11 +11,12 @@ import { CalendarDay } from '../models/calendar-day';
 })
 export class MainComponent implements OnInit {
   appointments$: Observable<Appointment[]> = new Observable<Appointment[]>;
-
+  isFiltered$: Observable<boolean> = new Observable<boolean>;
   constructor(private appointmentService: AppointmentService) {}
 
   ngOnInit(): void {
     this.appointments$ = this.appointmentService.getAppointments();
+    this.isFiltered$ = this.appointmentService.isFiltered();
   }
 
   onDaySelected(day: CalendarDay) {
@@ -24,5 +25,9 @@ export class MainComponent implements OnInit {
 
   onDayUnselected(day: CalendarDay) {
     this.appointmentService.removeFilter(day.date);
+  }
+
+  filterRemoved() {
+    this.appointmentService.clearFilter();
   }
 }

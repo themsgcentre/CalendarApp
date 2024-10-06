@@ -12,7 +12,7 @@ export class SaveRedirectComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private appointmentService: AppointmentService) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const appointment = new Appointment(new Date(params['date']), params['time'], params['title'], params['description']);
+      const appointment = new Appointment(params['id'], new Date(params['date']), params['time'], params['title'], params['description']);
       this.appointmentService.addAppointment(appointment);
       this.router.navigate(['/calendar']);
     });

@@ -8,15 +8,22 @@ import { CalendarDay } from '../models/calendar-day';
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss'
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, OnChanges {
   constructor(private calendarService: CalendarService) {}
   offset = 0;
   month!: CalendarMonth;
   @Output() daySelected = new EventEmitter<CalendarDay>();
   @Output() dayUnselected = new EventEmitter<CalendarDay>();
+  @Input() isFiltered: boolean = false;
 
   ngOnInit(): void {
     this.month = this.calendarService.getMonth(this.offset, []);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['isFiltered'] && this.isFiltered === false) {
+      this.month = this.calendarService.getMonth(this.offset, []);
+    }
   }
 
   offsetChanged(offsetChange: number) {

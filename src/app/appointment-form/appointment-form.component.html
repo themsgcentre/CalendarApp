@@ -1,0 +1,22 @@
+<form class="form-container" #form="ngForm">
+    <div class="date-time-container">
+        <div class="date-container">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" [(ngModel)]="appointmentModel.date" name="date" class="picker" required>
+        </div>
+        <div class="time-container">
+            <label for="time" class="form-label">Time</label>
+            <input type="time" [(ngModel)]="appointmentModel.time" name="time" class="picker" required>
+        </div>
+    </div>
+    <div class="title-container">
+        <label for="title" class="form-label">Title</label>
+        <textarea name="title" class="text-input" [(ngModel)]="appointmentModel.title" placeholder="Enter a title..." required></textarea>
+    </div>
+    <div class="description-container">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" class="text-input" [(ngModel)]="appointmentModel.description" placeholder="Enter a description..." required></textarea>
+    </div>
+    <input (click)="submitted(form)" value="Submit" class="submit-button">
+</form>
+

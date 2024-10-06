@@ -13,6 +13,8 @@ import { CreateAppointmentComponent } from './create-appointment/create-appointm
 import { SaveRedirectComponent } from './save-redirect/save-redirect.component';
 import { AppointmentOverviewComponent } from './appointment-overview/appointment-overview.component';
 import { FormsModule } from '@angular/forms';
+import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
+import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     MonthPickerComponent,
     CreateAppointmentComponent,
     SaveRedirectComponent,
-    AppointmentOverviewComponent
+    AppointmentOverviewComponent,
+    AppointmentFormComponent,
+    EditAppointmentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,12 @@
-<div class="title">Your appointments: </div>
+<div class="title-container">
+  <div class="title">Your appointments: </div>
+  <div class="filter" *ngIf="filtered">Filter <span class="remove-button" (click)="removeFilter.emit()">&#10006;</span></div>
+</div>
 <div class="appointment-list">
     <div *ngFor="let appointment of appointments" class="appointment-block">
-      <span>{{ appointment.date | date: 'shortDate' }}: {{ appointment.title }}, {{appointment.time}}</span>
-      <img src="https://th.bing.com/th/id/OIP.NMPCNSo7-3CcGxC5FADhYgHaHa?rs=1&pid=ImgDetMain" class="icon" (click)="editAppointment()">
+      <span>{{ appointment.date | date: 'dd-MM-yyyy' }}: {{ appointment.title }}, {{appointment.time}}</span>
+      <img src="https://th.bing.com/th/id/OIP.NMPCNSo7-3CcGxC5FADhYgHaHa?rs=1&pid=ImgDetMain" class="icon" (click)="editAppointment(appointment)">
+      <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" class="icon" (click)="deleteAppointment(appointment)">
     </div>
 </div>
   

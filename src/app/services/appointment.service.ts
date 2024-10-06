@@ -16,19 +16,35 @@ export class AppointmentService {
   constructor() { }
 
   public clearAll(): void {
+    this.appointments = [];
     this.appointmentsSubject$.next([]);
   }
 
   public addAppointment(appointment: Appointment): void {
-    this.appointments.push(appointment);
+    let exists = false;
+    this.appointments.forEach(app => {
+      if(app.id === appointment.id) {
+        app.date = appointment.date;
+        app.time = appointment.time;
+        app.title = appointment.title;
+        app.description = appointment.description;
+        exists = true;
+      }
+    });
+    if(!exists) {
+      this.appointments.push(appointment)
+    }
     this.appointmentsSubject$.next([...this.appointments]);  
   }
 
-public removeAppointment(appointment: Appointment): void {
-    this.appointments = this.appointments.filter(app => app !== appointment); 
-    this.appointmentsSubject$.next([...this.appointments]); 
-}
+  public removeAppointment(appointment: Appointment): void {
+      this.appointments = this.appointments.filter(app => app !== appointment); 
+      this.appointmentsSubject$.next([...this.appointments]); 
+  }
 
+  public getNumberOfAppointments(): number {
+    return this.appointments.length;
+  }
 
   public getAppointments(): Observable<Appointment[]> {
     return combineLatest([this.appointments$, this.filter$]).pipe(
@@ -58,6 +74,12 @@ public removeAppointment(appointment: Appointment): void {
     this.filterSubject$.next(this.filter);
   }
 
+  public isFiltered(): Observable<boolean> {
+    return this.filter$.pipe(
+      map(dates => dates.length > 0)
+    );
+  }
+
   private isInDates(appointmentDate: Date, targetDates: Date[]): boolean {
     if (!appointmentDate) return false;
     for (let i = 0; i < targetDates.length; i++) {
@@ -67,4 +89,4 @@ public removeAppointment(appointment: Appointment): void {
     }
     return false;
   }  
-}
+  }

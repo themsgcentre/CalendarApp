@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Appointment } from '../models/appointment';
+import { Router } from '@angular/router';
+import { AppointmentService } from '../services/appointment.service';
 
 @Component({
   selector: 'app-appointment-overview',
@@ -7,10 +9,23 @@ import { Appointment } from '../models/appointment';
   styleUrl: './appointment-overview.component.scss'
 })
 export class AppointmentOverviewComponent {
-  @Input()
-  appointments: Appointment[] = [];
+  constructor(private router: Router, private appointmentService: AppointmentService) {}
+  @Input() appointments: Appointment[] = [];
+  @Input() filtered: boolean = false;
+  @Output() removeFilter = new EventEmitter();
 
-  editAppointment() {
-    
+  editAppointment(appointment: Appointment) {
+    this.router.navigate([
+      "/edit",
+      appointment.id,
+      appointment.title,
+      appointment.date.toISOString().split('T')[0],
+      appointment.time,
+      appointment.description
+    ]);
+  }
+
+  deleteAppointment(appointment: Appointment) {
+    this.appointmentService.removeAppointment(appointment);
   }
 }

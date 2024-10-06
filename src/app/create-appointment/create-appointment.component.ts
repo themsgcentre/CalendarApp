@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Appointment } from '../models/appointment';
 
 @Component({
   selector: 'app-create-appointment',
@@ -9,13 +9,8 @@ import { Router } from '@angular/router';
 })
 export class CreateAppointmentComponent {
   constructor(private router: Router) {}
-  public appointment = {
-    date: '',
-    time: '',
-    title: '',
-    description: '',
-  };
-  public onSubmit(): void {
-    this.router.navigate(['/save'], { queryParams: { Title: this.appointment.title, description: this.appointment.description, date: this.appointment.date, time: this.appointment.time } });
+  
+  public submittedAppointment(appointment: Appointment): void {
+    this.router.navigate(['/save'], { queryParams: { title: appointment.title, description: appointment.description, date: appointment.date, time: appointment.time, id: appointment.id } });
   }
 }
