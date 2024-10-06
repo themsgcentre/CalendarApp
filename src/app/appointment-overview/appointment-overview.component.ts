@@ -9,10 +9,11 @@ import { AppointmentService } from '../services/appointment.service';
   styleUrl: './appointment-overview.component.scss'
 })
 export class AppointmentOverviewComponent {
-  constructor(private router: Router, private appointmentService: AppointmentService) {}
+  constructor(private router: Router) {}
   @Input() appointments: Appointment[] = [];
   @Input() filtered: boolean = false;
   @Output() removeFilter = new EventEmitter();
+  @Output() deleteAppointment = new EventEmitter<Appointment>();
 
   editAppointment(appointment: Appointment) {
     this.router.navigate([
@@ -23,9 +24,5 @@ export class AppointmentOverviewComponent {
       appointment.time,
       appointment.description
     ]);
-  }
-
-  deleteAppointment(appointment: Appointment) {
-    this.appointmentService.removeAppointment(appointment);
   }
 }

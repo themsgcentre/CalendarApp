@@ -30,4 +30,8 @@ export class MainComponent implements OnInit {
   filterRemoved() {
     this.appointmentService.clearFilter();
   }
+
+  deleteAppointment(appointment: Appointment) {
+    this.appointmentService.removeAppointment(appointment);
+  }
 }
