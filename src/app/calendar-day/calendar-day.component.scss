@@ -2,13 +2,17 @@
     font-size: 18px;
 }
 
+:host {
+  outline-offset: -1.5px;
+}
+
 .today {
   background-color: darkgray;
 }
 
 .is-selected {
   outline: solid 1.5px rgb(70, 70, 70);
-  background-color: rgb(140, 140, 140);
+  background-color: silver;
   outline-offset: -1.5px;
 }
 
@@ -17,12 +21,11 @@
   cursor: pointer;
 }
 
-.not-current-month {
-  color: lightgrey;
-  opacity: 0.65;
+.not-in-month {
+  color: rgb(130, 130, 130);
 }
 
-:host(.inFilter) .not-current-month {
+:host(.inFilter) .not-in-month {
   color: black;
   opacity: 1;
 }

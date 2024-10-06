@@ -8,6 +8,8 @@
     <app-calendar-week
       *ngFor="let week of month.weeks"
       [week]="week"
+      (daySelected)="onDaySelected($event)"
+      (dayUnselected)="onDayUnselected($event)"
     ></app-calendar-week>
   </div>
 </div>

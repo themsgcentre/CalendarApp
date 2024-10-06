@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CalendarWeek } from '../models/calendar-week';
+import { CalendarDay } from '../models/calendar-day';
 
 @Component({
   selector: 'app-calendar-week',
@@ -8,18 +9,18 @@ import { CalendarWeek } from '../models/calendar-week';
 })
 export class CalendarWeekComponent {
   @Input() week!: CalendarWeek;
+  @Output() daySelected = new EventEmitter<CalendarDay>();
+  @Output() dayUnselected = new EventEmitter<CalendarDay>();
 
   isSunday(dayIndex: number): boolean {
     return (dayIndex + 1) % 7 === 0;
   }
 
-  selectWeek(): void {
-    /*if (this.week.isSelected) {
-      this.week.isSelected = false;
-      //this.weekSelected.emit(null);
-    } else {
-      this.week.isSelected = true;
-      //this.weekSelected.emit(this.week.days[0].date);
-    }*/
+  onDaySelected(day: CalendarDay) {
+    this.daySelected.emit(day);
+  }
+
+  onDayUnselected(day: CalendarDay) {
+    this.dayUnselected.emit(day);
   }
 }

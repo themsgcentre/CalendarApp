@@ -1,0 +1,28 @@
+:host {
+    margin-left: 50px;
+}
+
+.title {
+    font-size: 18px;
+    color: gray;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.appointment-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.appointment-block {
+    font-size: 16px;
+    margin: 2px;
+}

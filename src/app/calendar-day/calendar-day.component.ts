@@ -9,12 +9,16 @@ import { CalendarDay } from '../models/calendar-day';
 export class CalendarDayComponent {
   @Input() calendarDay!: CalendarDay;
   @Output() daySelected = new EventEmitter<CalendarDay>();
+  @Output() dayUnselected = new EventEmitter<CalendarDay>();
   selected = false;
 
   toggleSelected() {
     this.selected = !this.selected;
     if(this.selected) {
       this.daySelected.emit(this.calendarDay);
+    }
+    else {
+      this.dayUnselected.emit(this.calendarDay);
     }
   }
 }

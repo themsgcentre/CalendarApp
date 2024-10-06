@@ -1,24 +1,24 @@
 <div class="main-container">
     <div class="title">Create your new appointment:</div>
-    <form class="form-container" action="save" method="GET">
+    <form class="form-container" (ngSubmit)="onSubmit()">
         <div class="date-time-container">
             <div class="date-container">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" name="date" class="picker">
+                <input type="date" [(ngModel)]="appointment.date" name="date" class="picker" required>
             </div>
             <div class="time-container">
                 <label for="time" class="form-label">Time</label>
-                <input type="time" name="time" class="picker">
+                <input type="time" [(ngModel)]="appointment.time" name="time" class="picker" required>
             </div>
         </div>
         <div class="title-container">
             <label for="title" class="form-label">Title</label>
-            <textarea name="title" class="text-input" placeholder="Enter a title..."></textarea>
+            <textarea name="title" class="text-input" [(ngModel)]="appointment.title" placeholder="Enter a title..." required></textarea>
         </div>
         <div class="description-container">
             <label for="description" class="form-label">Description</label>
-            <textarea name="description" class="text-input" placeholder="Enter a description..."></textarea>
+            <textarea name="description" class="text-input" [(ngModel)]="appointment.description" placeholder="Enter a description..." required></textarea>
         </div>
-        <input type="submit" value="submit" class="submit-button">
+        <input type="submit" value="Submit" class="submit-button">
     </form>
 </div>

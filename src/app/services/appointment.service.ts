@@ -6,27 +6,29 @@ import { Appointment } from '../models/appointment';
   providedIn: 'root'
 })
 export class AppointmentService {
-  private appointmentsSubject = new BehaviorSubject<Appointment[]>([]);
-  private appointments$ = this.appointmentsSubject.asObservable();
+  private appointments: Appointment[] = [];
+  private appointmentsSubject$ = new BehaviorSubject<Appointment[]>([]);
+  private appointments$ = this.appointmentsSubject$.asObservable();
+  private filter: Date[] = [];
   private filterSubject$ = new BehaviorSubject<Date[]>([]);
   private filter$ = this.filterSubject$.asObservable();
 
   constructor() { }
 
   public clearAll(): void {
-    this.appointmentsSubject.next([]);
+    this.appointmentsSubject$.next([]);
   }
 
   public addAppointment(appointment: Appointment): void {
-    const currentAppointments = this.appointmentsSubject.value;
-    this.appointmentsSubject.next([...currentAppointments, appointment]);
+    this.appointments.push(appointment);
+    this.appointmentsSubject$.next([...this.appointments]);  
   }
 
-  public removeAppointment(appointment: Appointment): void {
-    const currentAppointments = this.appointmentsSubject.value;
-    const filteredAppointments = currentAppointments.filter(app => app !== appointment);
-    this.appointmentsSubject.next(filteredAppointments);
-  }
+public removeAppointment(appointment: Appointment): void {
+    this.appointments = this.appointments.filter(app => app !== appointment); 
+    this.appointmentsSubject$.next([...this.appointments]); 
+}
+
 
   public getAppointments(): Observable<Appointment[]> {
     return combineLatest([this.appointments$, this.filter$]).pipe(
@@ -39,8 +41,21 @@ export class AppointmentService {
     );
   }
 
-  public setFilter(dates: Date[]): void {
-    this.filterSubject$.next(dates);
+  public addFilter(date: Date): void {
+    this.filter.push(date);
+    this.filterSubject$.next(this.filter);
+  }
+
+  public removeFilter(date: Date) {
+    const currentFilter = this.filter;
+    const filtered = currentFilter.filter(dat => dat !== date);
+    this.filter = filtered;
+    this.filterSubject$.next(filtered);
+  }
+
+  public clearFilter() {
+    this.filter = [];
+    this.filterSubject$.next(this.filter);
   }
 
   private isInDates(appointmentDate: Date, targetDates: Date[]): boolean {

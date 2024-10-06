@@ -2,41 +2,30 @@
     margin-bottom: 2px;
 }
 
-.main-container {
-    margin-left: 20px;
-}
-
-.button-container {
-    width: 300px;
+.create-area {
     display: flex;
-    justify-content: center;
+    margin-bottom: 5px;
 }
 
 .create-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    height: 26px;
-    width: 100%;
-    line-height: 24px;
-    font-size: 13px;
-    background-color: slategray;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    transition: background-color 0.3s ease-in-out;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
 }
 
-.create-button:hover {
-    cursor: pointer;
-    background-color: rgb(64, 73, 82);
+.create-label {
+    font-size: 16px;
+    color: rgb(63, 63, 63);
+}
+
+.main-container {
+    margin-left: 20px;
 }
 
 .description {
     font-size: 16px;
     margin-top: 0px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     width: 300px;
 }
 

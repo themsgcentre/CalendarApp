@@ -1,16 +1,13 @@
 <div class="main-container">
     <h1 class="heading">My Calendar</h1>
-    <p class="description">Welcome to the my calendar app. Select different days or weeks to look into your appointments or create new ones.</p>
+    <p class="description">Welcome to the my calendar app. Select different days or weeks to look into your appointments or create new ones.
+        <img class="create-button" name="create-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZOo_w3gcU3ZsSiw5aS_KgnpA3NGCaAC2s_w&s" [routerLink]="['/create']">
+    </p>
     <div class="main-area">
         <div class="calendar-container">
-            <app-calendar></app-calendar>
+            <app-calendar (daySelected)="onDaySelected($event)" (dayUnselected)="onDayUnselected($event)"></app-calendar>
         </div>
         <app-appointment-overview [appointments]="(appointments$ | async) || []"></app-appointment-overview>
-    </div>
-    <div class="button-container">
-        <div class="create-button" [routerLink]="['/create']">
-            create appointment
-        </div>
     </div>
 </div>
 

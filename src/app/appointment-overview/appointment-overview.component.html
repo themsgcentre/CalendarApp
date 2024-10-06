@@ -2,7 +2,7 @@
 <div class="appointment-list">
     <div *ngFor="let appointment of appointments" class="appointment-block">
       <span>{{ appointment.date | date: 'shortDate' }}: {{ appointment.title }}, {{appointment.time}}</span>
-      <img src="https://th.bing.com/th/id/OIP.NMPCNSo7-3CcGxC5FADhYgHaHa?rs=1&pid=ImgDetMain" class="icon">
+      <img src="https://th.bing.com/th/id/OIP.NMPCNSo7-3CcGxC5FADhYgHaHa?rs=1&pid=ImgDetMain" class="icon" (click)="editAppointment()">
     </div>
 </div>
   

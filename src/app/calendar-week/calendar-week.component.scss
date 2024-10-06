@@ -1,5 +1,5 @@
 .filter-border {
-  outline: 1.5px solid silver;
+  outline: solid 1.5px rgb(70, 70, 70);
   outline-offset: -1.5px;
 }
 
@@ -9,16 +9,17 @@
   align-items: center;
 
   .calendar-week {
-    width: 12.5%;
+    width: 7%;
     color: slategray;
+    opacity: 0.3;
     text-align: center;
     font-size: 18px;
   }
 
   .calendar-days-container {
-    width: 87.5%;
+    width: 93%;
     display: flex;
-    background-color: lightgray;
+    background-color: rgb(235, 235, 235);
 
     .calendar-day {
       flex-grow: 1;
@@ -29,6 +30,7 @@
   .calendar-week:hover {
     background-color: silver;
     color: black;
+    cursor: pointer;
   }
 
   .is-selected {
@@ -40,11 +42,11 @@
   }
 
   .sundays {
-    font-weight: bold;
+    font-weight: 750;
   }
 
   .inFilter {
-    background-color: gray;
+    background-color: silver;
   }
 
 }

@@ -9,4 +9,8 @@ import { Appointment } from '../models/appointment';
 export class AppointmentOverviewComponent {
   @Input()
   appointments: Appointment[] = [];
+
+  editAppointment() {
+    
+  }
 }

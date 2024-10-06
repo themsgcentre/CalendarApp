@@ -19,7 +19,7 @@ export class CalendarService {
   constructor() { }
   daysInMonthOverview = 42;
 
-  getMonth(offset: number): CalendarMonth {
+  getMonth(offset: number, filter: Date[]): CalendarMonth {
       let month: CalendarMonth;
 
       const currentMoment = addMonths(Date.now(), offset);
@@ -36,21 +36,6 @@ export class CalendarService {
     return month;
   };
 
-  private setSelected(nextMonths: CalendarMonth[], filteredWeekStartDate: Date) {
-    if (filteredWeekStartDate == null || !isDate(filteredWeekStartDate)) {
-      return;
-    }
-
-    nextMonths.forEach((month) => {
-      const filteredWeek = month.weeks.find((week) => getWeek(filteredWeekStartDate) === week.calenderWeek);
-      if (filteredWeek) {
-        const firstDayInMonth = filteredWeek.days[0].date.getMonth() === month.moment.getMonth();
-        const lastDayInMonth = filteredWeek.days[6].date.getMonth() === month.moment.getMonth();
-        filteredWeek.isSelected = firstDayInMonth || lastDayInMonth;
-      }
-    });
-  }
-
   private createMonth(moment: Date): CalendarMonth {
     const monthName = moment.toLocaleString('en', { month: 'long' });
 
@@ -60,7 +45,7 @@ export class CalendarService {
   private getCalendarWeeks(days: CalendarDay[]): CalendarWeek[] {
     const weeks: CalendarWeek[] = [];
     for (let i = 0; i < days.length; i += 7) {
-      weeks.push(new CalendarWeek(this.getWeekNumber(days.slice(i, i + 7)), days.slice(i, i + 7), false));
+      weeks.push(new CalendarWeek(this.getWeekNumber(days.slice(i, i + 7)), days.slice(i, i + 7)));
     }
     return weeks;
   }
@@ -83,7 +68,7 @@ export class CalendarService {
 
     for (let dayOfWeek = weekDayOfFirstOfMonth - 1; dayOfWeek > 0; dayOfWeek--) {
       const day = subDays(beginningOfMonth, dayOfWeek);
-      const calendarDay = new CalendarDay(day, isToday(day), false);
+      const calendarDay = new CalendarDay(day, isToday(day), false, false);
       previousMonth.push(calendarDay);
     }
 
@@ -97,7 +82,7 @@ export class CalendarService {
 
     for (let day = 0; day < daysInActualMonth; day++) {
       const currentDate = addDays(firstDayOfMonth, day);
-      const calendarDay = new CalendarDay(currentDate, isToday(currentDate), true);
+      const calendarDay = new CalendarDay(currentDate, isToday(currentDate), true, false);
       actualDays.push(calendarDay);
     }
 
@@ -114,7 +99,7 @@ export class CalendarService {
 
     for (let day = 0; day < this.daysInMonthOverview - filledUpDays; day++) {
       const currentDate = addDays(beginningOfNextMonth, day);
-      const calendarDay = new CalendarDay(currentDate, isToday(currentDate), false);
+      const calendarDay = new CalendarDay(currentDate, isToday(currentDate), false, false);
       nextDays.push(calendarDay);
     }
     return nextDays;

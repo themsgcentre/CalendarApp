@@ -12,6 +12,7 @@ import { MonthPickerComponent } from './month-picker/month-picker.component';
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
 import { SaveRedirectComponent } from './save-redirect/save-redirect.component';
 import { AppointmentOverviewComponent } from './appointment-overview/appointment-overview.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AppointmentOverviewComponent } from './appointment-overview/appointment
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,3 @@
 export class CalendarDay {
-  constructor(public date: Date, public today: boolean, public currentMonth: boolean) {}
+  constructor(public date: Date, public today: boolean, public currentMonth: boolean, public selected: boolean) {}
 }

@@ -1,4 +1,6 @@
-<app-month-picker class="picker" [monthName]="month.moment | date: 'MMMM yyyy'" (offsetChange)="offsetChanged($event)">(picker)</app-month-picker>
+<app-month-picker class="picker" [monthName]="month.moment | date: 'MMMM (yyyy)'" (offsetChange)="offsetChanged($event)">(picker)</app-month-picker>
 <app-month
     [month]="month"
+    (dayUnselected)="onDayUnselected($event)"
+    (daySelected)="onDaySelected($event)"
 ></app-month>

@@ -1,23 +1,25 @@
 :host {
-    width: 300px;
+    width: 450px;
   }
   
-  * {
-    text-align: center;
-  }
+* {
+  text-align: center;
+}
   
-  .headline {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    background-color: slategray;
-    margin-bottom: 2px;
-  }
+.headline {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: slategray;
+  margin-bottom: 2px;
+}
   
-  .calendar-body {
+.calendar-body {
     .weekdays {
-      margin-left: 14.29%;
+      margin-left: 7%;
+      opacity: 0.5;
       display: flex;
+      justify-content: space-between;
   
       .calendar-element {
         font-size: 18px;
@@ -30,12 +32,11 @@
   
     .calendar-element {
       width: 14.26%;
-      line-height: 39px;
-      border-radius: 50px;
+      line-height: 35px;
     }
   
     .calendar-week-container {
-      line-height: 39px;
+      line-height: 35px;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -43,6 +44,6 @@
     }
   
     .sundays {
-      font-weight: bold;
+      font-weight: 750;
     }
-  }
+}
