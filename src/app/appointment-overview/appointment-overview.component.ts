@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Appointment } from '../models/appointment';
 import { Router } from '@angular/router';
-import { AppointmentService } from '../services/appointment.service';
 
 @Component({
   selector: 'app-appointment-overview',
