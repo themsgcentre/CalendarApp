@@ -23,4 +23,24 @@ describe('CalendarDayComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle selected state and emit correct events', () => {
+    component.selected = false;  
+    component.calendarDay = new CalendarDay(new Date(), false, true, false);
+
+    spyOn(component.daySelected, 'emit');
+    spyOn(component.dayUnselected, 'emit');
+
+    component.toggleSelected();
+
+    expect(component.selected).toBeTruthy();
+    expect(component.daySelected.emit).toHaveBeenCalledWith(component.calendarDay);
+    expect(component.dayUnselected.emit).not.toHaveBeenCalled();
+
+    component.toggleSelected();
+
+    expect(component.selected).toBeFalsy();
+    expect(component.dayUnselected.emit).toHaveBeenCalledWith(component.calendarDay);
+    expect(component.daySelected.emit).toHaveBeenCalledTimes(1);
+  });
 });

@@ -15,11 +15,12 @@ export class AppointmentOverviewComponent {
   @Output() deleteAppointment = new EventEmitter<Appointment>();
 
   editAppointment(appointment: Appointment) {
+    const dateStr = appointment.date.toLocaleDateString('en-CA');
     this.router.navigate([
       "/edit",
       appointment.id,
       appointment.title,
-      appointment.date.toISOString().split('T')[0],
+      dateStr,
       appointment.time,
       appointment.description
     ]);

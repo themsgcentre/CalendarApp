@@ -5,8 +5,6 @@ import {
   addDays,
   addMonths,
   getDaysInMonth,
-  getWeek,
-  isDate,
   isToday,
   subDays,
 } from 'date-fns';

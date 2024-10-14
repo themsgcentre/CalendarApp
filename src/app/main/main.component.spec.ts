@@ -16,7 +16,6 @@ describe('MainComponent', () => {
   let component: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
 
-  // Mock für den AppointmentService
   const mockAppointmentService = {
     getFilteredAppointments: jasmine.createSpy('getFilteredAppointments').and.returnValue(of([])),
     getAllAppointments: jasmine.createSpy('getAllAppointments').and.returnValue(of([])),

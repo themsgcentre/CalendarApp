@@ -48,6 +48,8 @@ describe('EditAppointmentComponent', () => {
 
   it('should initialize the appointment with route parameters', () => {
     expect(component.appointment).toBeDefined();
+    expect(component.appointment?.id).toBe(1);
+    expect(component.appointment?.date.toLocaleDateString('en-CA')).toBe('2024-10-14');
     expect(component.appointment?.title).toBe('Test Appointment');
     expect(component.appointment?.time).toBe('10:00');
     expect(component.appointment?.description).toBe('Test description');
